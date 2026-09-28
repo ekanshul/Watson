@@ -4,6 +4,7 @@ import json
 from argparse import Namespace
 
 import pytest
+from click.shell_completion import ShellComplete
 
 from watson.autocompletion import (
     get_frames,
@@ -13,6 +14,7 @@ from watson.autocompletion import (
     get_rename_types,
     get_tags,
 )
+from watson.cli import cli
 
 from . import TEST_FIXTURE_DIR
 
@@ -25,6 +27,7 @@ N_VARIATIONS_OF_PROJECT3 = 2
 N_FRAME_IDS_FOR_PREFIX = 2
 
 ClickContext = Namespace
+ARGS_PARAM = Namespace(name="args")
 
 
 @pytest.mark.datafiles(AUTOCOMPLETION_FRAMES_PATH)
@@ -43,9 +46,9 @@ ClickContext = Namespace
 )
 def test_if_returned_values_are_distinct(watson_df, func_to_test, rename_type, args):
     """Completion functions should not return duplicates."""
-    ctx = ClickContext(obj=watson_df, params={"rename_type": rename_type})
+    ctx = ClickContext(obj=watson_df, params={"args": args, "rename_type": rename_type})
     prefix = ""
-    ret_list = list(func_to_test(ctx, args, prefix))
+    ret_list = list(func_to_test(ctx, ARGS_PARAM, prefix))
     assert sorted(ret_list) == sorted(set(ret_list))
 
 
@@ -68,8 +71,8 @@ def test_if_empty_prefix_returns_everything(
 ):
     """An empty prefix should complete to all values."""
     prefix = ""
-    ctx = ClickContext(obj=watson_df, params={"rename_type": rename_type})
-    completed_vals = set(func_to_test(ctx, args, prefix))
+    ctx = ClickContext(obj=watson_df, params={"args": args, "rename_type": rename_type})
+    completed_vals = set(func_to_test(ctx, ARGS_PARAM, prefix))
     assert len(completed_vals) == n_expected_returns
 
 
@@ -90,9 +93,9 @@ def test_if_empty_prefix_returns_everything(
 )
 def test_completion_of_nonexisting_prefix(watson_df, func_to_test, rename_type, args):
     """An unknown prefix should complete to nothing."""
-    ctx = ClickContext(obj=watson_df, params={"rename_type": rename_type})
+    ctx = ClickContext(obj=watson_df, params={"args": args, "rename_type": rename_type})
     prefix = "NOT-EXISTING-PREFIX"
-    ret_list = list(func_to_test(ctx, args, prefix))
+    ret_list = list(func_to_test(ctx, ARGS_PARAM, prefix))
     assert not ret_list
 
 
@@ -127,8 +130,8 @@ def test_completion_of_existing_prefix(  # noqa: PLR0913, PLR0917
     watson_df, func_to_test, prefix, n_expected_vals, rename_type, args
 ):
     """An existing prefix should complete to matching values."""
-    ctx = ClickContext(obj=watson_df, params={"rename_type": rename_type})
-    ret_set = set(func_to_test(ctx, args, prefix))
+    ctx = ClickContext(obj=watson_df, params={"args": args, "rename_type": rename_type})
+    ret_set = set(func_to_test(ctx, ARGS_PARAM, prefix))
     assert len(ret_set) == n_expected_vals
     assert all(cur_elem.startswith(prefix) for cur_elem in ret_set)
 
@@ -144,5 +147,23 @@ def test_completion_of_existing_prefix(  # noqa: PLR0913, PLR0917
 )
 def test_for_known_completion_values(func_to_test, prefix, expected_vals):
     """Completion should return the expected values."""
-    ret_list = list(func_to_test(None, [], prefix))
+    ret_list = list(func_to_test(None, ARGS_PARAM, prefix))
     assert ret_list == expected_vals
+
+
+@pytest.mark.datafiles(AUTOCOMPLETION_FRAMES_PATH)
+@pytest.mark.parametrize(
+    "command_args, incomplete, expected_prefix",
+    [
+        (["start"], "project", "project"),
+        (["start", "project1"], "+tag", "+tag"),
+        (["start", "project1", "+tag1"], "+tag", "+tag"),
+        (["add", "-f", "10:00", "-t", "11:00", "project1"], "+tag", "+tag"),
+    ],
+)
+def test_completion_through_click(watson_df, command_args, incomplete, expected_prefix):
+    """Click should call completers with a Parameter object."""
+    completer = ShellComplete(cli, {"obj": watson_df}, "watson", "_WATSON_COMPLETE")
+    completions = completer.get_completions(command_args, incomplete)
+    assert completions
+    assert all(item.value.startswith(expected_prefix) for item in completions)

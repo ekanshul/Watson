@@ -8,6 +8,10 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Fixed
+
+- Fix shell completion crash with Click 8+
+
 ## [3.0.0] - 2026-11-22
 
 ### Added
