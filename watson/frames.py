@@ -1,6 +1,7 @@
 import uuid
 
 import arrow
+from dateutil import tz
 
 from collections import namedtuple
 
@@ -24,10 +25,10 @@ class Frame(namedtuple('Frame', HEADERS)):
             from .watson import WatsonError
             raise WatsonError("Error converting date: {}".format(e))
 
-        start = start.to('local')
+        start = start.to(tz.tzlocal())
 
         if stop:
-            stop = stop.to('local')
+            stop = stop.to(tz.tzlocal())
 
         if tags is None:
             tags = []

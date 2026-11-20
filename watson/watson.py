@@ -6,6 +6,7 @@ import os
 import uuid
 from configparser import Error as CFGParserError
 import arrow
+from dateutil import tz
 import click
 
 from .config import ConfigParser
@@ -94,7 +95,7 @@ class Watson(object):
 
     def _parse_date(self, date):
         """Returns Arrow object from timestamp."""
-        return arrow.Arrow.utcfromtimestamp(date).to('local')
+        return arrow.Arrow.utcfromtimestamp(date).to(tz.tzlocal())
 
     def _format_date(self, date):
         """Returns timestamp from string timestamp or Arrow object."""
