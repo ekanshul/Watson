@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Test coverage reporting with `pytest-cov`
+
 ### Fixed
 
 - Wrong local time offset for dates in a different DST period than now (arrow 1.4+)

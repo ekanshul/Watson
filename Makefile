@@ -25,7 +25,7 @@ docs-publish: ## publish documentation
 .PHONY: docs-publish
 
 test: ## run tests
-	uv run pytest
+	uv run pytest --cov --cov-report=term-missing --cov-report=html
 .PHONY: test
 
 completion-scripts:
