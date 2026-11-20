@@ -22,6 +22,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 - Python 3.10 support (minimal version is now 3.11)
+- Unused configuration files:
+  - `MANIFEST.in` (ignored by hatchling)
+  - `pytest.ini` (`datafiles` marker is registered by `pytest-datafiles`)
 
 ### Security
 
