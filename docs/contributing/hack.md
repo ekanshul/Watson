@@ -4,7 +4,7 @@ Ready to contribute? Here's how to set up *Watson* for local development.
 
 ## Python requirements
 
-- Python 3.10+
+- Python 3.11+
 - [UV](https://docs.astral.sh/uv/) package manager
 
 ## Get started!
