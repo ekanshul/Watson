@@ -19,6 +19,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Python 3.10 support (minimal version is now 3.11)
 
+### Security
+
+- Upgrade vulnerable locked dependencies:
+  - `certifi` (2026.10.23)
+  - `urllib3` (2.8.0)
+  - `idna` (3.20)
+  - `requests` (2.34.2)
+  - `pytest` (9.2.0)
+  - `pygments` (2.21.0)
+
 ## [2.1.0] - 2022-05-16
 
 ### Added
