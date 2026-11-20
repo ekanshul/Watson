@@ -3,13 +3,19 @@
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+and this project adheres to
+[Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
 ### Added
 
 - Test coverage reporting with `pytest-cov`
+- GitHub Actions CI workflows:
+  - quality (tests)
+  - documentation deployment
+  - PyPI package publication
+  - chore checks (fixup commits, CHANGELOG)
 
 ### Changed
 
@@ -17,7 +23,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Wrong local time offset for dates in a different DST period than now (arrow 1.4+)
+- Wrong local time offset for dates in a different DST period than now
+  (arrow 1.4+)
 
 ### Removed
 
@@ -144,7 +151,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add support for first day of the week configuration in reports and logs (#240)
 - Python 3.7 support (#241)
 - Add `start --no-gap` and `stop --at` options (#254)
-- Add `--confirm-new-project` and `--confirm-new-tag` options to `start`, `add` and `edit` commands (#275)
+- Add `--confirm-new-project` and `--confirm-new-tag` options to `start`, `add`
+  and `edit` commands (#275)
 
 ### Changed
 
@@ -260,7 +268,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - A complete browsable documentation
 - Watson's brand new logo!
-- Support for Watson's directory override via the WATSON_DIR environment variable
+- Support for Watson's directory override via the WATSON_DIR environment
+  variable
 
 ## [1.2.0] - 2016-01-22
 
