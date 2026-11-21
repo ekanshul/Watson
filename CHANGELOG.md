@@ -10,14 +10,15 @@ and this project adheres to
 
 ### Added
 
-- Test coverage reporting with `pytest-cov`
-- GitHub Actions CI workflows:
+- Integrate test coverage reporting with `pytest-cov`
+- Ruff linter and formatter with `make lint*` rules
+- Add GitHub Actions CI workflows:
   - quality (tests)
   - documentation deployment
   - PyPI package publication
   - chore checks (fixup commits, CHANGELOG)
   - lint (ruff format and check)
-- Ruff linter and formatter with `make lint*` rules
+  - spelling checks with `codespell`
 
 ### Changed
 
@@ -27,15 +28,16 @@ and this project adheres to
 
 ### Fixed
 
-- Wrong local time offset for dates in a different DST period than now
+- Fix wrong local time offset for dates in a different DST period than now
   (arrow 1.4+)
 - Command examples in help messages being re-wrapped by click
 - Leaked `# noqa` comment in the `stop` command help message
+- Fix yypos in code comments, shell completions and documentation
 
 ### Removed
 
-- Python 3.10 support (minimal version is now 3.11)
-- Unused configuration files:
+- Drop Python 3.10 support (minimal version is now 3.11)
+- Removed unused configuration files:
   - `MANIFEST.in` (ignored by hatchling)
   - `pytest.ini` (`datafiles` marker is registered by `pytest-datafiles`)
 

@@ -61,6 +61,7 @@ packages = ["watson"]
 
 [dependency-groups]
 dev = [
+    "codespell>=2.4,<3",
     "mkdocs>=1.6.1",
     "mkdocs-bootswatch>=1.1",
     "pytest>=9.0.2",
@@ -70,6 +71,10 @@ dev = [
     "pytest-runner>=6.0.1",
     "ruff>=0.17.6",
 ]
+
+[tool.codespell]
+skip = "*.lock,*.gif,*.svg,*.json,./site,./htmlcov,./.coverage,./.venv*,./.git,./.*_cache"
+check-hidden = true
 
 [tool.coverage.run]
 source = ["watson"]

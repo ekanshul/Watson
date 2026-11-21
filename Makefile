@@ -28,7 +28,8 @@ docs-publish: ## publish documentation
 lint: ## lint all sources
 lint: \
   lint-format \
-  lint-ruff
+  lint-ruff \
+  lint-codespell
 .PHONY: lint
 
 lint-format: ## format python sources with ruff format
@@ -50,6 +51,16 @@ lint-ruff-fix: ## lint and fix python sources with ruff
 	@echo 'lint:ruff-fix started…'
 	uv run ruff check --fix watson tests scripts
 .PHONY: lint-ruff-fix
+
+lint-codespell: ## check spelling with codespell
+	@echo 'lint:codespell started…'
+	uv run codespell
+.PHONY: lint-codespell
+
+lint-codespell-fix: ## check and fix spelling with codespell
+	@echo 'lint:codespell-fix started…'
+	uv run codespell --write-changes
+.PHONY: lint-codespell-fix
 
 test: ## run tests
 	uv run pytest --cov --cov-report=term-missing --cov-report=html
