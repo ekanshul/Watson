@@ -152,7 +152,7 @@ def get_frame_from_argument(watson, arg):
 
     The argument can either be a position index (-1) or a frame id.
     """
-    # first we try to see if we are refering to a frame by
+    # first we try to see if we are referring to a frame by
     # its position (for example -2). We only take negative indexes
     # as a positive index might also be an existing id
     try:

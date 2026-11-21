@@ -100,11 +100,11 @@ To authenticate watson as an API client, once generated, you will need to set up
 
 #### `options.confirm_new_project` (default: `false`)
 
-If `true`, the user will be asked for confirmation before creating a new project. The option can be overriden in the command line with `--confirm-new-project` flag.
+If `true`, the user will be asked for confirmation before creating a new project. The option can be overridden in the command line with `--confirm-new-project` flag.
 
 #### `options.confirm_new_tag` (default: `false`)
 
-If `true`, the user will be asked for confirmation before creating a new tag. The option can be overriden in the command line with `--confirm-new-tag` flag.
+If `true`, the user will be asked for confirmation before creating a new tag. The option can be overridden in the command line with `--confirm-new-tag` flag.
 
 #### `options.date_format` (default: `%Y.%m.%d`)
 

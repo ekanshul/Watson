@@ -61,7 +61,7 @@ function __fish_watson_needs_project -d "check if we need a project"
     if [ $argv[1] = $cmd[2] ]
       for i in $cmd
         if contains $i (__fish_watson_get_projects)
-          return 1 # return 1 because we alredy have a project
+          return 1 # return 1 because we already have a project
         end
       end
       return 0 # we are using $argv as our command and the command does not contain any projects
@@ -106,7 +106,7 @@ complete -f -c watson -n '__fish_watson_using_command aggregate' -s T -l tag -d 
 complete -f -c watson -n '__fish_watson_using_command aggregate' -s j -l json -d "output json"
 complete -f -c watson -n '__fish_watson_using_command aggregate' -s s -l csv -d "output csv"
 complete -f -c watson -n '__fish_watson_using_command aggregate' -s g -l pager -d "view through pager"
-complete -f -c watson -n '__fish_watson_using_command aggregate' -s G -l no-pager -d "don't vew through pager"
+complete -f -c watson -n '__fish_watson_using_command aggregate' -s G -l no-pager -d "don't view through pager"
 
 # config
 complete -f -c watson -n '__fish_watson_needs_sub' -a config -d "Get and set configuration options"
@@ -133,7 +133,7 @@ complete -f -c watson -n '__fish_watson_using_command log' -s T -l tag -d "restr
 complete -f -c watson -n '__fish_watson_using_command log' -s j -l json -d "output json"
 complete -f -c watson -n '__fish_watson_using_command log' -s s -l csv -d "output csv"
 complete -f -c watson -n '__fish_watson_using_command log' -s g -l pager -d "view through pager"
-complete -f -c watson -n '__fish_watson_using_command log' -s G -l no-pager -d "don't vew through pager"
+complete -f -c watson -n '__fish_watson_using_command log' -s G -l no-pager -d "don't view through pager"
 
 # merge
 complete -f -c watson -n '__fish_watson_needs_sub' -a merge -d "merge existing frames with conflicting ones"
@@ -165,7 +165,7 @@ complete -f -c watson -n '__fish_watson_using_command report' -s T -l tag -d "re
 complete -f -c watson -n '__fish_watson_using_command report' -s j -l json -d "output json"
 complete -f -c watson -n '__fish_watson_using_command report' -s s -l csv -d "output csv"
 complete -f -c watson -n '__fish_watson_using_command report' -s g -l pager -d "view through pager"
-complete -f -c watson -n '__fish_watson_using_command report' -s G -l no-pager -d "don't vew through pager"
+complete -f -c watson -n '__fish_watson_using_command report' -s G -l no-pager -d "don't view through pager"
 
 # restart
 complete -f -c watson -n '__fish_watson_needs_sub' -a restart -d "Restart monitoring time for a stopped project"
