@@ -16,7 +16,7 @@ can be shared across projects and can be used to generate detailed
 reports.
 
 Watson stores everything on your computer, but you can go wild and
-upload to your own [crick server](https://github.com/TailorDev/crick)
+upload to your own [crick server](https://github.com/jmaupetit/crick)
 via the `sync` command to store your sessions remotely and share them
 with your colleagues.
 
@@ -78,7 +78,7 @@ $ source ~/.bashrc  # Reload your .bashrc
 The latest development version can be installed using the following commands:
 
 ```bash
-$ git clone https://github.com/TailorDev/Watson.git
+$ git clone https://github.com/jmaupetit/Watson.git
 $ cd Watson/
 $ pip install -e .
 ```
@@ -86,7 +86,6 @@ $ pip install -e .
 ### Command line completion
 
 #### Bash
-
 
 If you use a Bash-compatible shell, you can install the `watson.completion` file from the source distribution as `/etc/bash.completion.d/watson` - or wherever your distribution keeps the Bash completion configuration files. After you restart your shell, you can then just type `watson` on your command line and then hit `TAB` to see all available commands. Depending on your input, it completes `watson` commands, command options, projects, tags and frame IDs.
 
@@ -108,11 +107,9 @@ If you use fish, you can copy or symlink the file `watson.fish` from the source 
 You may need to make the completions directory as it is not created by default.
 
 Once this is done, re-source your fish config:
-  `source ~/.config/fish/config.fish`
+`source ~/.config/fish/config.fish`
 
 You will now have command completion for fish, including the completion of known projects, tags, and frames.
-
-
 
 ## Getting started
 
@@ -122,7 +119,7 @@ Now that `watson` is installed on your system, let's start tracking your activit
 $ watson start world-domination +cats
 ```
 
-With this command, you have started a new **frame** for the *world-domination* project with the *cat* tag. Time is running. Now, you need to work on your project. Let's do this. Now.
+With this command, you have started a new **frame** for the _world-domination_ project with the _cat_ tag. Time is running. Now, you need to work on your project. Let's do this. Now.
 
 ![Working cat](img/working-cat.gif){: width="400px" }
 

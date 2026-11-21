@@ -72,11 +72,11 @@ Tuesday 26 January 2016 (8m 32s)
 ```
 
 Please note that, as [the report
-command](https://tailordev.github.io/Watson/user-guide/commands/#report), the
+command](https://jmaupetit.github.io/Watson/user-guide/commands/#report), the
 `log` command comes with projects, tags and dates filtering.
 
 To list all available commands, either [read the
-documentation](https://tailordev.github.io/Watson) or use:
+documentation](https://jmaupetit.github.io/Watson) or use:
 
 
 ```sh
@@ -86,7 +86,7 @@ $ watson help
 ## Contributor Code of Conduct
 
 If you want to contribute to this project, please read the project [Contributor
-Code of Conduct](https://tailordev.github.io/Watson/contributing/coc/)
+Code of Conduct](https://jmaupetit.github.io/Watson/contributing/coc/)
 
 ## License
 
