@@ -26,6 +26,7 @@ and this project adheres to
 - Add current maintainer to the license copyright notice
 - Format and lint all sources with ruff
 - Set a 30-second timeout for backend synchronization requests
+- Read the Watson version from the installed package metadata
 
 ### Fixed
 
@@ -46,6 +47,7 @@ and this project adheres to
 - Removed unused configuration files:
   - `MANIFEST.in` (ignored by hatchling)
   - `pytest.ini` (`datafiles` marker is registered by `pytest-datafiles`)
+- Remove `watson/version.py` (`pyproject.toml` is the single version source)
 
 ### Security
 

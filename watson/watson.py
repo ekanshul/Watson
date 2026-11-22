@@ -7,6 +7,7 @@ import os
 import uuid
 from configparser import Error as CFGParserError
 from functools import reduce
+from importlib.metadata import version
 
 import arrow
 import click
@@ -15,7 +16,8 @@ from dateutil import tz
 from .config import ConfigParser
 from .frames import Frames
 from .utils import deduplicate, make_json_writer, safe_save, sorted_groupby
-from .version import version as __version__  # noqa
+
+__version__ = version("td-watson")
 
 # Remote backend requests timeout (in seconds)
 REQUEST_TIMEOUT = 30

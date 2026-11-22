@@ -11,10 +11,16 @@ Create a new branch:
 $ git checkout -b prepare-x.y.z
 ```
 
-Edit the following files to describe changes and bump the version number:
+Bump the version number with
+[`uv version`](https://docs.astral.sh/uv/guides/package/#updating-your-version),
+which updates both `pyproject.toml` and `uv.lock`:
 
-* `pyproject.toml` and `watson/version.py`: update the version number
-* `uv.lock`: update it by running `uv lock`
+```bash
+$ uv version --bump minor  # or patch, major
+```
+
+Then edit the following files to describe changes:
+
 * `CHANGELOG.md`: move the `Unreleased` entries to a new dated section and
   update the compare links at the bottom of the file
 * `docs/about/release-notes.md`: copy/paste release notes here
@@ -25,7 +31,7 @@ Then commit your work, using the release notes as the commit body, and push
 your branch to GitHub:
 
 ```bash
-$ git add pyproject.toml uv.lock watson/version.py CHANGELOG.md \
+$ git add pyproject.toml uv.lock CHANGELOG.md \
   docs/about/release-notes.md watson.completion watson.zsh-completion
 $ git commit -m '🔖(minor) bump release to x.y.z'  # or (patch), (major)
 $ git push origin prepare-x.y.z
