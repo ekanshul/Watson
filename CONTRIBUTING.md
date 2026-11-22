@@ -1,7 +1,7 @@
 # Contributing
 
-If you are reading this, we thank you in advance for willing to contribute to
-the Watson project! You are awesome.
+If you are reading this, we thank you in advance for being willing to
+contribute to the Watson project! You are awesome.
 
 Before starting to contribute, please read the following:
 

@@ -25,7 +25,7 @@ and this project adheres to
 
 - Add current maintainer to the license copyright notice
 - Format and lint all sources with ruff
-- Set a 30 seconds timeout for backend synchronization requests
+- Set a 30-second timeout for backend synchronization requests
 
 ### Fixed
 
@@ -33,7 +33,12 @@ and this project adheres to
   (arrow 1.4+)
 - Command examples in help messages being re-wrapped by click
 - Leaked `# noqa` comment in the `stop` command help message
-- Fix yypos in code comments, shell completions and documentation
+- Fix typos in code comments, shell completions and documentation
+- Fix outdated documentation:
+  - installation, development and release instructions
+  - configuration options behavior
+  - command examples and help messages
+  - broken links
 
 ### Removed
 

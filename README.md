@@ -10,7 +10,7 @@ Wanna know what it looks like? Check this below.
 
 [![Watson demo](https://jmaupetit.github.io/Watson/img/watson-demo.gif)](https://asciinema.org/a/35918)
 
-Nice isn't it?
+Nice, isn't it?
 
 ## Quick start
 
@@ -25,20 +25,20 @@ $ uv tool install td-watson
 This will create a Python virtual environment for Watson and a shortcut
 available in your `$PATH`.
 
-Alternatively, you may use Pip instead (in a virtual environment):
+Alternatively, you may use pip inside a virtual environment:
 
 ```sh
-$ pip install --user td-watson
+$ pip install td-watson
 ```
 
-On OS X, a [Homebrew](http://brew.sh/) formula is also available:
+On macOS, a [Homebrew](https://brew.sh/) formula is also available:
 
 ```sh
 $ brew update && brew install watson
 ```
 
-If you need more details about installing watson, please refer to the
-[documentation](https://jmaupetit.github.io/Watson)
+If you need more details about installing Watson, please refer to the
+[documentation](https://jmaupetit.github.io/Watson).
 
 ### Usage
 
@@ -51,11 +51,11 @@ $ watson start world-domination +cats
 With this command, you have started a new **frame** for the *world-domination*
 project with the *cats* tag. That's it.
 
-Now stop tracking you world domination plan via:
+Now stop tracking your world domination plan via:
 
 ```sh
 $ watson stop
-Project world-domination [cats] started 8 minutes ago (2016.01.27 13:00:28+0100)
+Stopping project world-domination [cats], started 8 minutes ago and stopped just now. (id: ffb2a4c)
 ```
 
 You can log your latest working sessions (aka *frames*) thanks to the `log`
@@ -67,9 +67,9 @@ Tuesday 26 January 2016 (8m 32s)
       ffb2a4c  13:00 to 13:08      08m 32s   world-domination  [cats]
 ```
 
-Please note that, as [the report
-command](https://jmaupetit.github.io/Watson/user-guide/commands/#report), the
-`log` command comes with projects, tags and dates filtering.
+Please note that, like the
+[`report` command](https://jmaupetit.github.io/Watson/user-guide/commands/#report),
+the `log` command can filter by project, tag and date.
 
 To list all available commands, either [read the
 documentation](https://jmaupetit.github.io/Watson) or use:
@@ -81,7 +81,7 @@ $ watson help
 ## Contributor Code of Conduct
 
 If you want to contribute to this project, please read the project [Contributor
-Code of Conduct](https://jmaupetit.github.io/Watson/contributing/coc/)
+Code of Conduct](https://jmaupetit.github.io/Watson/contributing/coc/).
 
 ## License
 

@@ -7,11 +7,11 @@ assignees: ""
 ---
 
 Please make sure you have read our
-[main Readme](https://github.com/jmaupetit/Watson) as well as our
+[main README](https://github.com/jmaupetit/Watson) as well as our
 [documentation](https://jmaupetit.github.io/Watson/).
 
 Also make sure it was not already answered in
-[an open or close issue](https://github.com/jmaupetit/Watson/issues).
+[an open or closed issue](https://github.com/jmaupetit/Watson/issues).
 
 If your question was not covered, and you feel like it should be, fire away!
 We'd love to improve our docs! 👌

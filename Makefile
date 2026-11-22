@@ -6,6 +6,9 @@ SHELL := /bin/bash
 
 default: help
 
+docs/user-guide/commands.md:
+	uv run python scripts/gen-cli-docs.py
+
 # -- Build
 bootstrap: ## bootstrap the project for development
 bootstrap: \
@@ -16,7 +19,11 @@ build: ## install project
 	uv sync --locked --all-extras --dev
 .PHONY: build
 
+cmd-docs: ## Make command docs 
+	$(MAKE) -B docs/user-guide/commands.md
+
 docs-serve: ## run documentation server 
+docs-serve: docs/user-guide/commands.md
 	uv run mkdocs serve -w docs
 .PHONY: docs-serve
 

@@ -1,11 +1,11 @@
 # Hack
 
-Ready to contribute? Here's how to set up *Watson* for local development.
+Ready to contribute? Here's how to set up _Watson_ for local development.
 
 ## Python requirements
 
 - Python 3.11+
-- [UV](https://docs.astral.sh/uv/) package manager
+- [uv](https://docs.astral.sh/uv/) package manager
 
 ## Get started!
 
@@ -26,43 +26,48 @@ Ready to contribute? Here's how to set up *Watson* for local development.
 
     Now you can make your changes locally.
 
-    *Notes:*
+    _Notes:_
 
-    - The files you need to edit to change watson's behavior are located in the
+    - The files you need to edit to change Watson's behavior are located in the
       `watson/` subfolder.
-    - Every time you run `watson` inside the virtual environment, the source
-      code inside the `watson/` subfolder will be used.
-    - To avoid messing with your real Watson data, watson will use `data/` as
-        the
-        [application folder](../user-guide/configuration.md#application-folder)
-        inside the virtual environment. You can run `watson projects` to check
-        that your real projects are not shown.
+    - Every time you use `uv run watson`, the source code inside the `watson/`
+      subfolder will be used.
+    - To avoid messing with your real Watson data, set the `WATSON_DIR`
+      environment variable to another
+      [application folder](../user-guide/configuration.md#application-folder),
+      e.g. `export WATSON_DIR=/tmp/watson`. You can run `uv run watson projects`
+      to check that your real projects are not shown.
 
-5. When you're done making changes, check that your changes pass the tests
-    (see [Run the tests](#run-the-tests)):
+5. When you're done making changes, check that they pass the linters and the
+   tests (see [Run the tests](#run-the-tests)):
 
-        (.venv) $ tox
+        $ make lint
+        $ make test
 
-6. If you have added a new command or updated/fixed docstrings, please update
-    the documentation. You can check changes live using:
+6. If you have added a new command or updated/fixed docstrings, please
+   regenerate the commands documentation. You can check changes live using
+   `make docs-serve`:
 
         $ make docs-serve
 
-7. Commit your changes and push your branch to GitHub:
+7. Describe your changes in the `## [Unreleased]` section of `CHANGELOG.md`
+   (this is checked by the CI).
+
+8. Commit your changes and push your branch to GitHub:
 
         $ git add .
         $ git commit -m "Your detailed description of your changes."
         $ git push -u origin name-of-your-bugfix-or-feature
 
-8. After [reading this](./pr-guidelines.md), submit a pull request through the
-    GitHub website.
+9. After [reading this](./pr-guidelines.md), submit a pull request through the
+   GitHub website.
 
 ## Run the tests
 
-The tests use [pytest](http://pytest.org/). To run them with the default Python
-interpreter run:
+The tests use [pytest](https://docs.pytest.org/). To run them with the default
+Python interpreter, use:
 
-    $ make test 
+    $ make test
 
 If you want to run pytest with custom options, use:
 

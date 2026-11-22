@@ -5,13 +5,13 @@
 Watson configuration and data are stored inside your user's application folder.
 Depending on your system, the default path is likely:
 
-* **MacOSX**: `~/Library/Application Support/watson/config`
+* **macOS**: `~/Library/Application Support/watson/config`
 * **Windows**: `%appdata%\watson\config`, which usually expands to
     `C:\Users\<user>\AppData\Roaming\watson\config`
 * **Linux**: `~/.config/watson/config`
 
 The configuration file is a typical
-[python configuration (INI) file](https://docs.python.org/3.9/library/configparser.html#supported-ini-file-structure),
+[Python configuration (INI) file](https://docs.python.org/3/library/configparser.html#supported-ini-file-structure),
 that looks like:
 
 ```ini
@@ -60,7 +60,7 @@ empty string value here =
 ```
 
 _This example configuration file has been taken from the
-[official python documentation](https://docs.python.org/3.9/library/configparser.html#supported-ini-file-structure)._
+[official Python documentation](https://docs.python.org/3/library/configparser.html#supported-ini-file-structure)._
 
 ## Editing
 
@@ -91,62 +91,64 @@ $ watson config -e
 
 ### Backend
 
-At this time there is no official backend for Watson. We are working on it. But
-in a near future, you will be able to synchronize Watson with a public (or your
-private) repository via the [`sync`](./commands.md#sync) command. To configure
-your repository please set up the `[backend]` section.
+Watson has no official hosted backend. You can synchronize your frames with your
+own server, such as [crick](https://github.com/TailorDev/crick), via the
+[`sync`](./commands.md#sync) command. To configure it, set up the `[backend]`
+section.
 
 #### `backend.url` (default: empty)
 
-This is the API root url of your repository, e.g. `https://my.server.com/api/`
+This is the API root URL of your server, e.g. `https://my.server.com/api/`
 
 #### `backend.token` (default: empty)
 
-To authenticate watson as an API client, once generated, you will need to set up
-your API token in your configuration, e.g. `7e329263e329`.
+The API token used to authenticate Watson as a client of your server, e.g.
+`7e329263e329`.
 
 ### Options
 
 #### `options.confirm_new_project` (default: `false`)
 
 If `true`, the user will be asked for confirmation before creating a new
-project. The option can be overridden in the command line with
-`--confirm-new-project` flag.
+project. When this option is `false`, you can still ask for confirmation on a
+single command with the `--confirm-new-project` flag.
 
 #### `options.confirm_new_tag` (default: `false`)
 
 If `true`, the user will be asked for confirmation before creating a new tag.
-The option can be overridden in the command line with `--confirm-new-tag` flag.
+When this option is `false`, you can still ask for confirmation on a single
+command with the `--confirm-new-tag` flag.
 
 #### `options.date_format` (default: `%Y.%m.%d`)
 
-Globally configure how `dates` should be formatted. All
-[python's `strftime` directives](http://strftime.org) are supported.
+Configure how the date is displayed by the `status` command. All
+[Python `strftime` directives](https://docs.python.org/3/library/datetime.html#format-codes)
+are supported.
 
 #### `options.log_current` (default: `false`)
 
 If `true`, the output of the `log` command will include the currently running
 frame (if any) by default. The option can be overridden on the command line
-with the `-c/-C` resp. `--current/--no-current` flags.
+with the `-c/-C` or `--current/--no-current` flags.
 
 #### `options.pager` (default: `true`)
 
-If `true`, the output of the `log` and `report` command will be
+If `true`, the output of the `log`, `report` and `aggregate` commands will be
 run through a pager by default. The option can be overridden on the command
 line with the `-g/-G` or `--pager/--no-pager` flags. If other commands output
-in colour, but `log` or `report` do not, try disabling the pager.
+in color, but these commands do not, try disabling the pager.
 
 #### `options.report_current` (default: `false`)
 
-If `true`, the output of the `report` command will include the currently
-running frame (if any) by default. The option can be overridden on the
-command line with the `-c/-C` resp. `--current/--no-current` flags.
+If `true`, the output of the `report` and `aggregate` commands will include the
+currently running frame (if any) by default. The option can be overridden on the
+command line with the `-c/-C` or `--current/--no-current` flags.
 
 #### `options.reverse_log` (default: `true`)
 
 If `true`, the output of the `log` command will reverse the order of the days
 to display the latest day's entries on top and the oldest day's entries at the
-bottom. The option can be overridden on the command line with the `-r/-R` resp.
+bottom. The option can be overridden on the command line with the `-r/-R` or
 `--reverse/--no-reverse` flags.
 
 #### `options.stop_on_start` (default: `false`)
@@ -157,15 +159,15 @@ If `true`, starting a new project will stop running projects:
 $ watson start samourai +pizza +cat
 Starting project samourai [pizza, cat] at 11:14
 $ watson start jayce +wheeled +warriors
-Stopping project samourai [pizza, cat], started 2 minutes ago. (id: d08cdd0)
+Stopping project samourai [pizza, cat], started 2 minutes ago and stopped just now. (id: d08cdd0)
 Starting project jayce [wheeled, warriors] at 11:16
 ```
 
-Please, note that it also works with serious stuffs like:
+Please note that it also works with serious stuff like:
 
 ```text
 $ watson start voyager2 +reactor +module
-Stopping project jayce [wheeled, warriors], started 2 minutes ago. (id: 967965f)
+Stopping project jayce [wheeled, warriors], started 2 minutes ago and stopped just now. (id: 967965f)
 Starting project voyager2 [reactor, module] at 11:18
 ```
 
@@ -176,14 +178,15 @@ Similar to the `options.stop_on_start` option, but for the
 
 #### `options.time_format` (default: `%H:%M:%S%z`)
 
-Globally configure how `time` should be formatted. All
-[python's `strftime` directives](http://strftime.org) are supported.
+Configure how the time is displayed by the `status` command. All
+[Python `strftime` directives](https://docs.python.org/3/library/datetime.html#format-codes)
+are supported.
 
 #### `options.week_start` (default: `monday`)
 
-Globally configure which day corresponds to the start of a week. Allowable
+Globally configure which day corresponds to the start of a week. Allowed
 values are `monday`, `tuesday`, `wednesday`, `thursday`, `friday`,
- `saturday`, and `sunday`.
+`saturday`, and `sunday`.
 
 ### Default tags
 
@@ -200,7 +203,7 @@ You can set default tags for a project from the command line:
 $ watson config default_tags.python101 'teaching python'
 ```
 
-This corresponds to the following configuration file snippets:
+This corresponds to the following configuration file snippet:
 
 ```ini
 [default_tags]
@@ -239,7 +242,7 @@ A basic configuration file looks like the following:
 # Watson configuration
 
 [backend]
-url = https://api.crick.fr
+url = https://my.server.com/api/
 token = yourapitoken
 
 [options]
@@ -256,8 +259,9 @@ reverse_log = true
 
 ## Application folder
 
-To override Watson's default application folder (see first section), you can set
-the `$WATSON_DIR` environment variable to the desired path.
+To override Watson's default application folder (see
+[the configuration file](#the-configuration-file)), you can set the
+`$WATSON_DIR` environment variable to the desired path.
 
 It may be defined globally in your shell profile:
 

@@ -11,12 +11,11 @@ Then, when you are done, stop the timer with the `stop`
 command. This will create what we call a **frame**. That's pretty much
 everything you need to know to start using Watson.
 
-Each frame consists of the name of a project and some tags. Your tags
-can be shared across projects and can be used to generate detailed
-reports.
+Each frame records a project, optional tags, and its start and stop times. Your
+tags can be shared across projects and can be used to generate detailed reports.
 
 Watson stores everything on your computer, but you can go wild and
-upload to your own [crick server](https://github.com/jmaupetit/crick)
+upload to your own [crick server](https://github.com/TailorDev/crick)
 via the `sync` command to store your sessions remotely and share them
 with your colleagues.
 
@@ -24,18 +23,25 @@ with your colleagues.
 
 ## Installation
 
-Watson is available on any platform supported by Python (Windows, Mac,
+Watson is available on any platform supported by Python (Windows, macOS,
 Linux, *BSD…). The easiest way to install it is to use
-[pip](https://pip.pypa.io/en/stable/installing/):
+[uv](https://docs.astral.sh/uv/):
+
+```bash
+$ uv tool install td-watson
+```
+
+This creates an isolated environment for Watson and makes the `watson` command
+available in your `PATH`.
+
+Alternatively, you can use
+[pip](https://pip.pypa.io/en/stable/installation/) inside a virtual environment:
 
 ```bash
 $ pip install td-watson
 ```
 
-Depending on your system, you might need to run this command with root
-privileges in order to install Watson globally.
-
-On OS X, the easiest way to install Watson is using [Homebrew](http://brew.sh/):
+On macOS, you can also install Watson using [Homebrew](https://brew.sh/):
 
 ```bash
 $ brew update && brew install watson
@@ -49,8 +55,8 @@ You can install Watson using available distribution packages.
 
 A `PKGBUILD` file for building an Arch Linux package is available in the
 [AUR](https://aur.archlinux.org/packages/watson/). You can build and
-install it using the [makepkg](https://wiki.archlinux.org/index.php/Makepkg)
-or an [AUR helper](https://wiki.archlinux.org/index.php/AUR_helpers).
+install it using [makepkg](https://wiki.archlinux.org/title/Makepkg)
+or an [AUR helper](https://wiki.archlinux.org/title/AUR_helpers).
 Please refer to the official documentation for more information on
 installing AUR packages.
 
@@ -78,12 +84,14 @@ $ source ~/.bashrc  # Reload your .bashrc
 
 ### Development version
 
-The latest development version can be installed using the following commands:
+The latest development version can be installed with
+[uv](https://docs.astral.sh/uv/) using the following commands:
 
 ```bash
 $ git clone https://github.com/jmaupetit/Watson.git
 $ cd Watson/
-$ pip install -e .
+$ make bootstrap
+$ uv run watson --version
 ```
 
 ### Command line completion
@@ -91,7 +99,7 @@ $ pip install -e .
 #### Bash
 
 If you use a Bash-compatible shell, you can install the `watson.completion` file
-from the source distribution as `/etc/bash.completion.d/watson` - or wherever
+from the source distribution as `/etc/bash_completion.d/watson` - or wherever
 your distribution keeps the Bash completion configuration files. After you
 restart your shell, you can then just type `watson` on your command line and
 then hit `TAB` to see all available commands. Depending on your input, it
@@ -107,7 +115,7 @@ If you use zsh, copy the file `watson.zsh-completion` somewhere in your
 cp watson.zsh-completion /usr/local/share/zsh/site-functions/_watson
 ```
 
-Make sure that your .zshrc enables compinit:
+Make sure that your `.zshrc` enables compinit:
 
 ```text
 autoload -Uz compinit && compinit
@@ -135,7 +143,7 @@ $ watson start world-domination +cats
 ```
 
 With this command, you have started a new **frame** for the _world-domination_
-project with the _cat_ tag. Time is running. Now, you need to work on your
+project with the _cats_ tag. Time is running. Now, you need to work on your
 project. Let's do this. Now.
 
 ![Working cat](img/working-cat.gif){: width="400px" }
@@ -145,7 +153,7 @@ time tracking via:
 
 ```bash
 $ watson stop
-Project world-domination [cat] started 34 minutes ago (id: 166d1fb)
+Stopping project world-domination [cats], started 34 minutes ago and stopped just now. (id: 166d1fb)
 ```
 
 To list all available commands, either

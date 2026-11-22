@@ -11,7 +11,7 @@ nav:
     - Commands: 'user-guide/commands.md'
     - Configuration: 'user-guide/configuration.md'
 - Contributing:
-    - Howto: 'contributing/how-to.md'
+    - How to: 'contributing/how-to.md'
     - Hack: 'contributing/hack.md'
     - Pull Request guidelines: 'contributing/pr-guidelines.md'
     - Code of Conduct: 'contributing/coc.md'

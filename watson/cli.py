@@ -258,7 +258,7 @@ def start(ctx, watson, confirm_new_project, confirm_new_tag, args, at_, gap_=Tru
     `options.stop_on_start` is set to a true value (`1`, `on`, `true`, or
     `yes`), it is stopped before the new project is started.
 
-    If `--at` option is given, the provided starting time is used. The
+    If the `--at` option is given, the provided starting time is used. The
     specified time must be after the end of the previous frame and must not be
     in the future. If there is a current frame running, it will be stopped at
     the provided time.
@@ -266,7 +266,7 @@ def start(ctx, watson, confirm_new_project, confirm_new_tag, args, at_, gap_=Tru
     Example:
 
     \b
-    $ watson start --at 13:37
+    $ watson start apollo11 --at 13:37
     Starting project apollo11 at 13:37
 
     If the `--no-gap` flag is given, the start time of the new project is set
@@ -327,7 +327,7 @@ def start(ctx, watson, confirm_new_project, confirm_new_tag, args, at_, gap_=Tru
 def stop(watson, at_):
     """Stop monitoring time for the current project.
 
-    If `--at` option is given, the provided stopping time is used. The
+    If the `--at` option is given, the provided stopping time is used. The
     specified time must be after the beginning of the to-be-ended frame and must
     not be in the future.
 
@@ -379,7 +379,7 @@ def stop(watson, at_):
     "--stop/--no-stop",
     "stop_",
     default=None,
-    help="(Don't) Stop an already running project.",
+    help="(Don't) stop an already running project.",
 )
 @click.argument("id", default="-1", shell_complete=get_frames)
 @click.pass_obj
@@ -397,8 +397,8 @@ def restart(ctx, watson, id, stop_, at_, gap_=True):
     do nothing. If you set the configuration option `options.stop_on_restart`
     to a true value (`1`, `on`, `true`, or `yes`), the current project, if any,
     will be stopped before the new frame is started. You can pass the option
-    `-s` or `--stop` resp. `-S` or `--no-stop` to override the default or
-    configured behaviour.
+    `-s`/`--stop` or `-S`/`--no-stop` to override the default or
+    configured behavior.
 
     If no previous frame exists or an invalid frame index or ID was given,
     an error is printed and no further action taken.
@@ -409,13 +409,13 @@ def restart(ctx, watson, id, stop_, at_, gap_=True):
     $ watson start apollo11 +module +brakes
     Starting project apollo11 [module, brakes] at 16:34
     $ watson stop
-    Stopping project apollo11, started a minute ago. (id: e7ccd52)
+    Stopping project apollo11 [module, brakes], started a minute ago and stopped just now. (id: e7ccd52)
     $ watson restart
     Starting project apollo11 [module, brakes] at 16:36
 
     If the `--no-gap` flag is given, the start time of the new project is set
     to the stop time of the most recently stopped project.
-    """
+    """  # noqa: E501
     if not watson.frames and not watson.is_started:
         raise click.ClickException(
             style(
@@ -559,7 +559,7 @@ _SHORTCUT_OPTIONS_VALUES = {k: get_start_time_for_period(k) for k in _SHORTCUT_O
     type=DateTime,
     default=arrow.now(),
     mutually_exclusive=_SHORTCUT_OPTIONS,
-    help="The date at which the report should stop (inclusive). Defaults to tomorrow.",
+    help="The date at which the report should stop (inclusive). Defaults to today.",
 )
 @click.option(
     "-y",
@@ -712,7 +712,7 @@ def report(  # noqa: PLR0912
     If a project is given, the time spent on this project is printed.
     Else, print the total for each root project.
 
-    By default, the time spent the last 7 days is printed. This timespan
+    By default, the time spent during the last 7 days is printed. This timespan
     can be controlled with the `--from` and `--to` arguments. The dates
     must have the format `YEAR-MONTH-DAY`, like: `2014-05-19`.
 
@@ -970,7 +970,7 @@ def report(  # noqa: PLR0912
     type=DateTime,
     default=arrow.now(),
     mutually_exclusive=_SHORTCUT_OPTIONS,
-    help="The date at which the report should stop (inclusive). Defaults to tomorrow.",
+    help="The date at which the report should stop (inclusive). Defaults to today.",
 )
 @click.option(
     "-p",
@@ -1035,7 +1035,7 @@ def aggregate(ctx, watson, current, from_, to, projects, tags, output_format, pa
     If a project is given, the time spent on this project is printed.
     Else, print the total for each root project.
 
-    By default, the time spent the last 7 days is printed. This timespan
+    By default, the time spent during the last 7 days is printed. This timespan
     can be controlled with the `--from` and `--to` arguments. The dates
     must have the format `YEAR-MONTH-DAY`, like: `2014-05-19`.
 
@@ -1171,7 +1171,7 @@ def aggregate(ctx, watson, current, from_, to, projects, tags, output_format, pa
     "--to",
     type=DateTime,
     default=arrow.now(),
-    help="The date at which the log should stop (inclusive). Defaults to tomorrow.",
+    help="The date at which the log should stop (inclusive). Defaults to today.",
 )
 @click.option(
     "-y",
@@ -1786,7 +1786,7 @@ def edit(watson, confirm_new_project, confirm_new_tag, id):  # noqa: PLR0912, PL
 def remove(watson, id, force):
     """Remove a frame.
 
-    You can specify the frame either by id or by position (ex: `-1` for the last
+    You can specify the frame either by id or by position (e.g. `-1` for the last
     frame).
     """
     frame = get_frame_from_argument(watson, id)
@@ -1935,10 +1935,10 @@ def merge(watson, frames_with_conflict, force):
     more of the connected clients going offline. This can cause the
     frames to diverge.
 
-    If the `--force` command is specified, the merge operation
+    If the `--force` option is specified, the merge operation
     will automatically be performed.
 
-    The only argument is a path to the the conflicting `frames` file.
+    The only argument is a path to the conflicting `frames` file.
 
     Merge will output statistics about the merge operation.
 

@@ -3,7 +3,7 @@
     It should NOT BE EDITED.
     To update this part of the documentation,
     please type the following from the repository root:
-    $ make docs-->
+    $ uv run python scripts/gen-cli-docs.py -->
 
 # Commands
 ## `add`
@@ -41,7 +41,7 @@ Display a report of the time spent on each project aggregated by day.
 If a project is given, the time spent on this project is printed.
 Else, print the total for each root project.
 
-By default, the time spent the last 7 days is printed. This timespan
+By default, the time spent during the last 7 days is printed. This timespan
 can be controlled with the `--from` and `--to` arguments. The dates
 must have the format `YEAR-MONTH-DAY`, like: `2014-05-19`.
 
@@ -110,7 +110,7 @@ Flag | Help
 -----|-----
 `-c, --current / -C, --no-current` | (Don't) include currently running frame in report.
 `-f, --from DATETIME` | The date from when the report should start. Defaults to seven days ago.
-`-t, --to DATETIME` | The date at which the report should stop (inclusive). Defaults to tomorrow.
+`-t, --to DATETIME` | The date at which the report should stop (inclusive). Defaults to today.
 `-p, --project TEXT` | Reports activity only for the given project. You can add other projects by using this option several times.
 `-T, --tag TEXT` | Reports activity only for frames containing the given tag. You can add several tags by using this option multiple times
 `-j, --json` | Format output in JSON instead of plain text
@@ -300,7 +300,7 @@ Flag | Help
 `-c, --current / -C, --no-current` | (Don't) include currently running frame in output.
 `-r, --reverse / -R, --no-reverse` | (Don't) reverse the order of the days in output.
 `-f, --from DATETIME` | The date from when the log should start. Defaults to seven days ago.
-`-t, --to DATETIME` | The date at which the log should stop (inclusive). Defaults to tomorrow.
+`-t, --to DATETIME` | The date at which the log should stop (inclusive). Defaults to today.
 `-y, --year` | Reports activity for the current year.
 `-m, --month` | Reports activity for the current month.
 `-l, --luna` | Reports activity for the current moon cycle.
@@ -329,10 +329,10 @@ possibility that the frame file goes out-of-sync due to one or
 more of the connected clients going offline. This can cause the
 frames to diverge.
 
-If the `--force` command is specified, the merge operation
+If the `--force` option is specified, the merge operation
 will automatically be performed.
 
-The only argument is a path to the the conflicting `frames` file.
+The only argument is a path to the conflicting `frames` file.
 
 Merge will output statistics about the merge operation.
 
@@ -415,7 +415,7 @@ Usage:  watson remove [OPTIONS] ID
 
 Remove a frame.
 
-You can specify the frame either by id or by position (ex: `-1` for the last
+You can specify the frame either by id or by position (e.g. `-1` for the last
 frame).
 
 ### Options
@@ -458,7 +458,7 @@ Display a report of the time spent on each project.
 If a project is given, the time spent on this project is printed.
 Else, print the total for each root project.
 
-By default, the time spent the last 7 days is printed. This timespan
+By default, the time spent during the last 7 days is printed. This timespan
 can be controlled with the `--from` and `--to` arguments. The dates
 must have the format `YEAR-MONTH-DAY`, like: `2014-05-19`.
 
@@ -563,7 +563,7 @@ Flag | Help
 -----|-----
 `-c, --current / -C, --no-current` | (Don't) include currently running frame in report.
 `-f, --from DATETIME` | The date from when the report should start. Defaults to seven days ago.
-`-t, --to DATETIME` | The date at which the report should stop (inclusive). Defaults to tomorrow.
+`-t, --to DATETIME` | The date at which the report should stop (inclusive). Defaults to today.
 `-y, --year` | Reports activity for the current year.
 `-m, --month` | Reports activity for the current month.
 `-l, --luna` | Reports activity for the current moon cycle.
@@ -596,8 +596,8 @@ Normally, if a project is currently started, Watson will print an error and
 do nothing. If you set the configuration option `options.stop_on_restart`
 to a true value (`1`, `on`, `true`, or `yes`), the current project, if any,
 will be stopped before the new frame is started. You can pass the option
-`-s` or `--stop` resp. `-S` or `--no-stop` to override the default or
-configured behaviour.
+`-s`/`--stop` or `-S`/`--no-stop` to override the default or
+configured behavior.
 
 If no previous frame exists or an invalid frame index or ID was given,
 an error is printed and no further action taken.
@@ -608,7 +608,7 @@ Example:
     $ watson start apollo11 +module +brakes
     Starting project apollo11 [module, brakes] at 16:34
     $ watson stop
-    Stopping project apollo11, started a minute ago. (id: e7ccd52)
+    Stopping project apollo11 [module, brakes], started a minute ago and stopped just now. (id: e7ccd52)
     $ watson restart
     Starting project apollo11 [module, brakes] at 16:36
     
@@ -621,7 +621,7 @@ Flag | Help
 -----|-----
 `--at DATETIME` | Start frame at this time. Must be in (YYYY-MM-DDT)?HH:MM(:SS)? format.
 `-g, --gap / -G, --no-gap` | (Don't) leave gap between end time of previous project and start time of the current.
-`-s, --stop / -S, --no-stop` | (Don't) Stop an already running project.
+`-s, --stop / -S, --no-stop` | (Don't) stop an already running project.
 `--help` | Show this message and exit.
 
 ## `start`
@@ -639,7 +639,7 @@ If there is already a running project and the configuration option
 `options.stop_on_start` is set to a true value (`1`, `on`, `true`, or
 `yes`), it is stopped before the new project is started.
 
-If `--at` option is given, the provided starting time is used. The
+If the `--at` option is given, the provided starting time is used. The
 specified time must be after the end of the previous frame and must not be
 in the future. If there is a current frame running, it will be stopped at
 the provided time.
@@ -647,7 +647,7 @@ the provided time.
 Example:
 
 
-    $ watson start --at 13:37
+    $ watson start apollo11 --at 13:37
     Starting project apollo11 at 13:37
     
 If the `--no-gap` flag is given, the start time of the new project is set
@@ -710,7 +710,7 @@ Usage:  watson stop [OPTIONS]
 
 Stop monitoring time for the current project.
 
-If `--at` option is given, the provided stopping time is used. The
+If the `--at` option is given, the provided stopping time is used. The
 specified time must be after the beginning of the to-be-ended frame and must
 not be in the future.
 

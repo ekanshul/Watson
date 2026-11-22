@@ -1,17 +1,17 @@
 # How to contribute?
 
-If you are reading this, we thank you in advance for willing to
+If you are reading this, we thank you in advance for being willing to
 contribute to the Watson project! You are awesome.
 
 > **Disclaimer**
 >
 > This document is heavily inspired by [Kinto's project
-> documentation](https://github.com/Kinto/kinto). Thank Mozilla people
-> for providing such high quality content to the community.
+> documentation](https://github.com/Kinto/kinto). Thanks to the Mozilla
+> people for providing such high-quality content to the community.
 
 ## Report bugs
 
-Report bugs at <https://github.com/jmaupetit/Watson/issues/new>
+Report bugs at <https://github.com/jmaupetit/Watson/issues/new>.
 
 If you are reporting a bug, please include:
 
@@ -22,13 +22,13 @@ If you are reporting a bug, please include:
 ## Fix bugs
 
 Check out the [open bugs](https://github.com/jmaupetit/Watson/issues) -
-anything tagged with the **[easy-pick]** label could be a good choice
+anything tagged with the **easy pick** label could be a good choice
 for newcomers.
 
 ## Implement features
 
 Look through the GitHub issues for features. Anything tagged with
-**[enhancement]** is open to whoever wants to implement it.
+**feature request** is open to whoever wants to implement it.
 
 ## Write documentation
 
@@ -38,10 +38,10 @@ articles, and such.
 
 ## Submit feedback
 
-Any issue with the **[question]** label is open for feedback, so feel
+Any issue with the **question** label is open for feedback, so feel
 free to share your thoughts with us!
 
-The best way to send feedback is to [fill a new
+The best way to send feedback is to [open a new
 issue](https://github.com/jmaupetit/Watson/issues/new) on GitHub.
 
 If you are proposing a feature:
