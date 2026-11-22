@@ -47,6 +47,8 @@ jobs:
         run: make lint-ruff
       - name: Lint with Codespell
         run: make lint-codespell
+      - name: Lint with rumdl
+        run: make lint-markdown
 
   test:
     needs: build

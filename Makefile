@@ -29,7 +29,8 @@ lint: ## lint all sources
 lint: \
   lint-format \
   lint-ruff \
-  lint-codespell
+  lint-codespell \
+  lint-markdown
 .PHONY: lint
 
 lint-format: ## format python sources with ruff format
@@ -61,6 +62,16 @@ lint-codespell-fix: ## check and fix spelling with codespell
 	@echo 'lint:codespell-fix started…'
 	uv run codespell --write-changes
 .PHONY: lint-codespell-fix
+
+lint-markdown: ## lint markdown sources with rumdl
+	@echo 'lint:markdown started…'
+	uv run rumdl check .
+.PHONY: lint-markdown
+
+lint-markdown-fix: ## lint and fix markdown sources with rumdl
+	@echo 'lint:markdown-fix started…'
+	uv run rumdl check --fix .
+.PHONY: lint-markdown-fix
 
 test: ## run tests
 	uv run pytest --cov --cov-report=term-missing --cov-report=html

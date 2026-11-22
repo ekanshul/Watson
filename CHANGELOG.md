@@ -12,12 +12,13 @@ and this project adheres to
 
 - Integrate test coverage reporting with `pytest-cov`
 - Ruff linter and formatter with `make lint*` rules
+- Add Markdown linting and formatting with `rumdl`
 - Add GitHub Actions CI workflows:
   - quality (tests)
   - documentation deployment
   - PyPI package publication
   - chore checks (fixup commits, CHANGELOG)
-  - lint (ruff format and check)
+  - lint (ruff format + check and rumdl check)
   - spelling checks with `codespell`
 
 ### Changed
