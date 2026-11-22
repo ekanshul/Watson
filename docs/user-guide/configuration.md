@@ -2,13 +2,17 @@
 
 ## The configuration file
 
-Watson configuration and data are stored inside your user's application folder. Depending on your system, the default path is likely:
+Watson configuration and data are stored inside your user's application folder.
+Depending on your system, the default path is likely:
 
 * **MacOSX**: `~/Library/Application Support/watson/config`
-* **Windows**: `%appdata%\watson\config`, which usually expands to `C:\Users\<user>\AppData\Roaming\watson\config`
+* **Windows**: `%appdata%\watson\config`, which usually expands to
+    `C:\Users\<user>\AppData\Roaming\watson\config`
 * **Linux**: `~/.config/watson/config`
 
-The configuration file is a typical [python configuration (INI) file](https://docs.python.org/3.9/library/configparser.html#supported-ini-file-structure), that looks like:
+The configuration file is a typical
+[python configuration (INI) file](https://docs.python.org/3.9/library/configparser.html#supported-ini-file-structure),
+that looks like:
 
 ```ini
 [Simple Values]
@@ -55,12 +59,13 @@ empty string value here =
         # Did I mention we can indent comments, too?
 ```
 
-_This example configuration file has been taken from the [official python documentation](https://docs.python.org/3.9/library/configparser.html#supported-ini-file-structure)._
-
+_This example configuration file has been taken from the
+[official python documentation](https://docs.python.org/3.9/library/configparser.html#supported-ini-file-structure)._
 
 ## Editing
 
-If you want to edit your configuration, the best is to use the [`config`](./commands.md/#config) command.
+If you want to edit your configuration, the best is to use the
+[`config`](./commands.md#config) command.
 
 You can edit your configuration on the fly with:
 
@@ -86,7 +91,10 @@ $ watson config -e
 
 ### Backend
 
-At this time there is no official backend for Watson. We are working on it. But in a near future, you will be able to synchronize Watson with a public (or your private) repository via the [`sync`](./commands.md#sync) command. To configure your repository please set up the `[backend]` section.
+At this time there is no official backend for Watson. We are working on it. But
+in a near future, you will be able to synchronize Watson with a public (or your
+private) repository via the [`sync`](./commands.md#sync) command. To configure
+your repository please set up the `[backend]` section.
 
 #### `backend.url` (default: empty)
 
@@ -94,21 +102,26 @@ This is the API root url of your repository, e.g. `https://my.server.com/api/`
 
 #### `backend.token` (default: empty)
 
-To authenticate watson as an API client, once generated, you will need to set up your API token in your configuration, e.g. `7e329263e329`.
+To authenticate watson as an API client, once generated, you will need to set up
+your API token in your configuration, e.g. `7e329263e329`.
 
 ### Options
 
 #### `options.confirm_new_project` (default: `false`)
 
-If `true`, the user will be asked for confirmation before creating a new project. The option can be overridden in the command line with `--confirm-new-project` flag.
+If `true`, the user will be asked for confirmation before creating a new
+project. The option can be overridden in the command line with
+`--confirm-new-project` flag.
 
 #### `options.confirm_new_tag` (default: `false`)
 
-If `true`, the user will be asked for confirmation before creating a new tag. The option can be overridden in the command line with `--confirm-new-tag` flag.
+If `true`, the user will be asked for confirmation before creating a new tag.
+The option can be overridden in the command line with `--confirm-new-tag` flag.
 
 #### `options.date_format` (default: `%Y.%m.%d`)
 
-Globally configure how `dates` should be formatted. All [python's `strftime` directives](http://strftime.org) are supported.
+Globally configure how `dates` should be formatted. All
+[python's `strftime` directives](http://strftime.org) are supported.
 
 #### `options.log_current` (default: `false`)
 
@@ -140,7 +153,7 @@ bottom. The option can be overridden on the command line with the `-r/-R` resp.
 
 If `true`, starting a new project will stop running projects:
 
-```
+```text
 $ watson start samourai +pizza +cat
 Starting project samourai [pizza, cat] at 11:14
 $ watson start jayce +wheeled +warriors
@@ -150,7 +163,7 @@ Starting project jayce [wheeled, warriors] at 11:16
 
 Please, note that it also works with serious stuffs like:
 
-```
+```text
 $ watson start voyager2 +reactor +module
 Stopping project jayce [wheeled, warriors], started 2 minutes ago. (id: 967965f)
 Starting project voyager2 [reactor, module] at 11:18
@@ -158,11 +171,13 @@ Starting project voyager2 [reactor, module] at 11:18
 
 #### `options.stop_on_restart` (default: `false`)
 
-Similar to the `options.stop_on_start` option, but for the [`restart`](./commands.md#restart) command.
+Similar to the `options.stop_on_start` option, but for the
+[`restart`](./commands.md#restart) command.
 
 #### `options.time_format` (default: `%H:%M:%S%z`)
 
-Globally configure how `time` should be formatted. All [python's `strftime` directives](http://strftime.org) are supported.
+Globally configure how `time` should be formatted. All
+[python's `strftime` directives](http://strftime.org) are supported.
 
 #### `options.week_start` (default: `monday`)
 
@@ -170,19 +185,18 @@ Globally configure which day corresponds to the start of a week. Allowable
 values are `monday`, `tuesday`, `wednesday`, `thursday`, `friday`,
  `saturday`, and `sunday`.
 
-
 ### Default tags
 
 Tags can be automatically added for selected projects. This is convenient when
 the same tags are always attached to a particular project.
 
-These automatically attached tags are defined in the `[default_tags]` section
-of the configuration. Each option in that section is a project to which
-tags should be attached. The entries should follow the pattern: `project = tag1 tag2`.
+These automatically attached tags are defined in the `[default_tags]` section of
+the configuration. Each option in that section is a project to which tags should
+be attached. The entries should follow the pattern: `project = tag1 tag2`.
 
 You can set default tags for a project from the command line:
 
-```
+```text
 $ watson config default_tags.python101 'teaching python'
 ```
 
@@ -196,7 +210,7 @@ python101 = teaching python
 With these default tags set, the tags "teaching" and "python" will
 automatically be attached to the project "python101":
 
-```
+```text
 $ watson start python101
 Starting project python101 [teaching, python] at 19:27
 
@@ -206,7 +220,7 @@ Starting project python101 [lecture, teaching, python] at 19:28
 
 Default tags can contain space characters when written in between quotes:
 
-```
+```text
 $ watson config default_tags.voyager2 'nasa "space mission"'
 ```
 
@@ -242,7 +256,8 @@ reverse_log = true
 
 ## Application folder
 
-To override Watson's default application folder (see first section), you can set the `$WATSON_DIR` environment variable to the desired path.
+To override Watson's default application folder (see first section), you can set
+the `$WATSON_DIR` environment variable to the desired path.
 
 It may be defined globally in your shell profile:
 

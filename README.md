@@ -8,9 +8,7 @@ client? Watson is here for you.
 
 Wanna know what it looks like? Check this below.
 
-[
-![](https://jmaupetit.github.io/Watson/img/watson-demo.gif)
-](https://asciinema.org/a/35918)
+[![Watson demo](https://jmaupetit.github.io/Watson/img/watson-demo.gif)](https://asciinema.org/a/35918)
 
 Nice isn't it?
 
@@ -55,7 +53,6 @@ project with the *cats* tag. That's it.
 
 Now stop tracking you world domination plan via:
 
-
 ```sh
 $ watson stop
 Project world-domination [cats] started 8 minutes ago (2016.01.27 13:00:28+0100)
@@ -63,7 +60,6 @@ Project world-domination [cats] started 8 minutes ago (2016.01.27 13:00:28+0100)
 
 You can log your latest working sessions (aka *frames*) thanks to the `log`
 command:
-
 
 ```sh
 $ watson log
@@ -77,7 +73,6 @@ command](https://jmaupetit.github.io/Watson/user-guide/commands/#report), the
 
 To list all available commands, either [read the
 documentation](https://jmaupetit.github.io/Watson) or use:
-
 
 ```sh
 $ watson help

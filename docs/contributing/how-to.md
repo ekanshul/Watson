@@ -15,9 +15,9 @@ Report bugs at <https://github.com/jmaupetit/Watson/issues/new>
 
 If you are reporting a bug, please include:
 
--   Any details about your local setup that might be helpful in
-    troubleshooting.
--   Detailed steps to reproduce the bug.
+- Any details about your local setup that might be helpful in
+  troubleshooting.
+- Detailed steps to reproduce the bug.
 
 ## Fix bugs
 
@@ -46,10 +46,10 @@ issue](https://github.com/jmaupetit/Watson/issues/new) on GitHub.
 
 If you are proposing a feature:
 
--   Explain how you envision it working. Try to be as detailed as you
-    can.
--   Try to keep the scope as narrow as possible. This will help make it
-    easier to implement.
--   Feel free to include any code you might already have, even if it's
-    just a rough idea. This is a volunteer-driven project, and
-    contributions are welcome :)
+- Explain how you envision it working. Try to be as detailed as you
+  can.
+- Try to keep the scope as narrow as possible. This will help make it
+  easier to implement.
+- Feel free to include any code you might already have, even if it's
+  just a rough idea. This is a volunteer-driven project, and
+  contributions are welcome :)
