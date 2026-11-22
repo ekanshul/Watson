@@ -8,6 +8,8 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [3.0.0] - 2026-11-22
+
 ### Added
 
 - Integrate test coverage reporting with `pytest-cov`
@@ -347,7 +349,8 @@ and this project adheres to
 
 First stable public release 🎉
 
-[unreleased]: https://github.com/jmaupetit/watson/compare/2.1.0...HEAD
+[unreleased]: https://github.com/jmaupetit/watson/compare/3.0.0...HEAD
+[3.0.0]: https://github.com/jmaupetit/watson/compare/2.1.0...3.0.0
 [2.1.0]: https://github.com/jmaupetit/watson/compare/2.0.1...2.1.0
 [2.0.1]: https://github.com/jmaupetit/watson/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/jmaupetit/watson/compare/1.10.0...2.0.0

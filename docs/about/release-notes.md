@@ -6,6 +6,63 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.0] - 2026-11-22
+
+### Added
+
+- Integrate test coverage reporting with `pytest-cov`
+- Ruff linter and formatter with `make lint*` rules
+- Add Markdown linting and formatting with `rumdl`
+- Add GitHub Actions CI workflows:
+  - quality (tests)
+  - documentation deployment
+  - PyPI package publication
+  - chore checks (fixup commits, CHANGELOG)
+  - lint (ruff format + check and rumdl check)
+  - spelling checks with `codespell`
+
+### Changed
+
+- Add current maintainer to the license copyright notice
+- Format and lint all sources with ruff
+- Set a 30-second timeout for backend synchronization requests
+- Read the Watson version from the installed package metadata
+
+### Fixed
+
+- Fix wrong local time offset for dates in a different DST period than now
+  (arrow 1.4+)
+- Command examples in help messages being re-wrapped by click
+- Leaked `# noqa` comment in the `stop` command help message
+- Fix typos in code comments, shell completions and documentation
+- Fix Bash and Zsh completions broken since the move to click 8:
+  - regenerate `watson.completion` and `watson.zsh-completion`
+  - use click's current completion protocol in the generation script
+  - stop emptying completion files when the generation fails
+- Fix outdated documentation:
+  - installation, development and release instructions
+  - configuration options behavior
+  - command examples and help messages
+  - broken links
+
+### Removed
+
+- Drop Python 3.10 support (minimal version is now 3.11)
+- Removed unused configuration files:
+  - `MANIFEST.in` (ignored by hatchling)
+  - `pytest.ini` (`datafiles` marker is registered by `pytest-datafiles`)
+- Remove `watson/version.py` (`pyproject.toml` is the single version source)
+
+### Security
+
+- Upgrade vulnerable locked dependencies:
+  - `certifi` (2026.10.23)
+  - `urllib3` (2.8.0)
+  - `idna` (3.20)
+  - `requests` (2.34.2)
+  - `pytest` (9.2.0)
+  - `pygments` (2.21.0)
+
 ## [2.1.0] - 2022-05-16
 
 ### Added
@@ -230,7 +287,7 @@ and this project adheres to
 - A complete browsable documentation
 - Watson's brand new logo!
 - Support for Watson's directory override via the WATSON_DIR environment
-    variable
+  variable
 
 ## [1.2.0] - 2016-01-22
 
@@ -288,6 +345,7 @@ and this project adheres to
 
 First stable public release 🎉
 
+[3.0.0]: https://github.com/jmaupetit/watson/compare/2.1.0...3.0.0
 [2.1.0]: https://github.com/jmaupetit/watson/compare/2.0.1...2.1.0
 [2.0.1]: https://github.com/jmaupetit/watson/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/jmaupetit/watson/compare/1.10.0...2.0.0
