@@ -35,6 +35,10 @@ and this project adheres to
 - Command examples in help messages being re-wrapped by click
 - Leaked `# noqa` comment in the `stop` command help message
 - Fix typos in code comments, shell completions and documentation
+- Fix Bash and Zsh completions broken since the move to click 8:
+  - regenerate `watson.completion` and `watson.zsh-completion`
+  - use click's current completion protocol in the generation script
+  - stop emptying completion files when the generation fails
 - Fix outdated documentation:
   - installation, development and release instructions
   - configuration options behavior

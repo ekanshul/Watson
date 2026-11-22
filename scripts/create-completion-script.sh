@@ -29,11 +29,11 @@ case $1 in
     exit 0
     ;;
   bash)
-    src_command="source"
+    src_command="bash_source"
     target_file="watson.completion"
     ;;
   zsh)
-    src_command="source_zsh"
+    src_command="zsh_source"
     target_file="watson.zsh-completion"
     ;;
   *)
@@ -41,4 +41,17 @@ case $1 in
     exit 1
 esac
 
-_WATSON_COMPLETE=$src_command watson > "$target_file" || true
+# Generate into a temporary file so that a failure never alters the target
+tmp_file=$(mktemp)
+trap 'rm -f "$tmp_file"' EXIT
+
+_WATSON_COMPLETE=$src_command uv run --frozen watson > "$tmp_file"
+
+if [[ ! -s "$tmp_file" ]]
+then
+  echo "Generated $1 completion script is empty." >&2
+  exit 1
+fi
+
+# Do not move the temporary file: it would replace the target's file mode
+cat "$tmp_file" > "$target_file"
